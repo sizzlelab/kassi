@@ -19,4 +19,4 @@ old_databases.sql
 .sass_cache/
 capybara*
 public/system/
-
+.rvmrc
