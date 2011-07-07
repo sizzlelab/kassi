@@ -1,4 +1,3 @@
-<<<<<<< .merge_file_gEWoBI
 @import url('../reset.css');
 @import url('../text.css');
 @import url('../960_24_col.css');
@@ -886,13 +885,6 @@ span.not_visible {
     padding: 9px 9px; }
     #new_listing_form_main input.text_field:focus {
       background: white; }
-  #new_listing_form_main .map_canvas {
-    width: 398px;
-    border: 0;
-    background: #f7f5e6;
-    font-size: 14px;
-    height: 250px;
-    margin: 0px 9px 0px 170px; }    
   #new_listing_form_main input.send_button {
     font-size: 14px;
     font-weight: bold;
@@ -2993,69 +2985,3 @@ a.handle:hover {
   width: 30px;
   font-weight: bold;
   margin-top: 7px; }
-=======
-/*
-Syntax error: Invalid CSS after "": expected selector or at-rule, was "<!DOCTYPE html>"
-        on line 6 of app/stylesheets/style.scss
-
-1: 
-2:     
-3: 
-4:   
-5: 
-6: <!DOCTYPE html>
-7: <html>
-8:   <head>
-9:     <meta charset='utf-8'>
-10:     <meta http-equiv="X-UA-Compatible" content="chrome=1">
-11:         <title>app/stylesheets/style.scss at master from tlsalmin/kassi - GitHub</title>
-
-Backtrace:
-app/stylesheets/style.scss:6
-/Library/Ruby/Gems/1.8/gems/sass-3.1.3/bin/../lib/sass/../sass/scss/parser.rb:898:in `expected'
-/Library/Ruby/Gems/1.8/gems/sass-3.1.3/bin/../lib/sass/../sass/scss/parser.rb:841:in `expected'
-/Library/Ruby/Gems/1.8/gems/sass-3.1.3/bin/../lib/sass/../sass/scss/parser.rb:27:in `parse'
-/Library/Ruby/Gems/1.8/gems/sass-3.1.3/bin/../lib/sass/../sass/engine.rb:319:in `_to_tree'
-/Library/Ruby/Gems/1.8/gems/sass-3.1.3/bin/../lib/sass/../sass/engine.rb:291:in `_render'
-/Library/Ruby/Gems/1.8/gems/sass-3.1.3/bin/../lib/sass/../sass/engine.rb:238:in `render'
-/Library/Ruby/Gems/1.8/gems/sass-3.1.3/bin/../lib/sass/../sass/plugin/compiler.rb:319:in `update_stylesheet'
-/Library/Ruby/Gems/1.8/gems/sass-3.1.3/bin/../lib/sass/../sass/plugin/compiler.rb:181:in `update_stylesheets'
-/Library/Ruby/Gems/1.8/gems/sass-3.1.3/bin/../lib/sass/../sass/plugin/compiler.rb:175:in `each'
-/Library/Ruby/Gems/1.8/gems/sass-3.1.3/bin/../lib/sass/../sass/plugin/compiler.rb:175:in `update_stylesheets'
-/Library/Ruby/Gems/1.8/gems/sass-3.1.3/bin/../lib/sass/../sass/plugin/compiler.rb:173:in `each'
-/Library/Ruby/Gems/1.8/gems/sass-3.1.3/bin/../lib/sass/../sass/plugin/compiler.rb:173:in `update_stylesheets'
-/Library/Ruby/Gems/1.8/gems/sass-3.1.3/bin/../lib/sass/../sass/plugin/compiler.rb:252:in `watch'
-/Library/Ruby/Gems/1.8/gems/sass-3.1.3/vendor/fssm/lib/fssm/path.rb:71:in `call'
-/Library/Ruby/Gems/1.8/gems/sass-3.1.3/vendor/fssm/lib/fssm/path.rb:71:in `run_callback'
-/Library/Ruby/Gems/1.8/gems/sass-3.1.3/vendor/fssm/lib/fssm/path.rb:54:in `callback_action'
-/Library/Ruby/Gems/1.8/gems/sass-3.1.3/vendor/fssm/lib/fssm/path.rb:34:in `update'
-/Library/Ruby/Gems/1.8/gems/sass-3.1.3/vendor/fssm/lib/fssm/state/directory.rb:32:in `modified'
-/Library/Ruby/Gems/1.8/gems/sass-3.1.3/vendor/fssm/lib/fssm/state/directory.rb:31:in `each'
-/Library/Ruby/Gems/1.8/gems/sass-3.1.3/vendor/fssm/lib/fssm/state/directory.rb:31:in `modified'
-/Library/Ruby/Gems/1.8/gems/sass-3.1.3/vendor/fssm/lib/fssm/state/directory.rb:16:in `refresh'
-/Library/Ruby/Gems/1.8/gems/sass-3.1.3/vendor/fssm/lib/fssm/backends/fsevents.rb:15:in `add_handler'
-/Library/Ruby/Gems/1.8/gems/sass-3.1.3/vendor/fssm/lib/fssm/backends/fsevents.rb:14:in `each'
-/Library/Ruby/Gems/1.8/gems/sass-3.1.3/vendor/fssm/lib/fssm/backends/fsevents.rb:14:in `add_handler'
-/Library/Ruby/Gems/1.8/gems/sass-3.1.3/vendor/fssm/lib/fssm/backends/rubycocoa/fsevents.rb:107:in `call'
-/Library/Ruby/Gems/1.8/gems/sass-3.1.3/vendor/fssm/lib/fssm/backends/rubycocoa/fsevents.rb:107:in `initialize'
-/Library/Ruby/Gems/1.8/gems/sass-3.1.3/vendor/fssm/lib/fssm/backends/fsevents.rb:27:in `call'
-/Library/Ruby/Gems/1.8/gems/sass-3.1.3/vendor/fssm/lib/fssm/backends/fsevents.rb:27:in `CFRunLoopRun'
-/Library/Ruby/Gems/1.8/gems/sass-3.1.3/vendor/fssm/lib/fssm/backends/fsevents.rb:27:in `run'
-/Library/Ruby/Gems/1.8/gems/sass-3.1.3/vendor/fssm/lib/fssm/monitor.rb:24:in `run'
-/Library/Ruby/Gems/1.8/gems/sass-3.1.3/vendor/fssm/lib/fssm.rb:17:in `monitor'
-/Library/Ruby/Gems/1.8/gems/sass-3.1.3/bin/../lib/sass/../sass/plugin/compiler.rb:245:in `watch'
-/Library/Ruby/Gems/1.8/gems/sass-3.1.3/bin/../lib/sass/../sass/plugin.rb:111:in `send'
-/Library/Ruby/Gems/1.8/gems/sass-3.1.3/bin/../lib/sass/../sass/plugin.rb:111:in `method_missing'
-/Library/Ruby/Gems/1.8/gems/sass-3.1.3/bin/../lib/sass/../sass/exec.rb:408:in `watch_or_update'
-/Library/Ruby/Gems/1.8/gems/sass-3.1.3/bin/../lib/sass/../sass/exec.rb:294:in `process_result'
-/Library/Ruby/Gems/1.8/gems/sass-3.1.3/bin/../lib/sass/../sass/exec.rb:41:in `parse'
-/Library/Ruby/Gems/1.8/gems/sass-3.1.3/bin/../lib/sass/../sass/exec.rb:21:in `parse!'
-/Library/Ruby/Gems/1.8/gems/sass-3.1.3/bin/sass:8
-/usr/bin/sass:19:in `load'
-/usr/bin/sass:19
-*/
-body:before {
-  white-space: pre;
-  font-family: monospace;
-  content: "Syntax error: Invalid CSS after \"\": expected selector or at-rule, was \"<!DOCTYPE html>\"\A         on line 6 of app/stylesheets/style.scss\A \A 1: \A 2:     \A 3: \A 4:   \A 5: \A 6: <!DOCTYPE html>\A 7: <html>\A 8:   <head>\A 9:     <meta charset='utf-8'>\A 10:     <meta http-equiv=\"X-UA-Compatible\" content=\"chrome=1\">\A 11:         <title>app/stylesheets/style.scss at master from tlsalmin/kassi - GitHub</title>"; }
->>>>>>> .merge_file_0gu891
