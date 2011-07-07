@@ -59,7 +59,11 @@
  * @constructor
  * @extends google.maps.OverlayView
  */
+<<<<<<< .merge_file_jcJ1cl
 function MarkerClusterer(map, opt_markers, markerContents, infowindow, showingMarker, opt_options) {
+=======
+function MarkerClusterer(map, opt_markers, opt_listings, opt_listing_type, opt_options) {
+>>>>>>> .merge_file_AwCUZD
   // MarkerClusterer implements google.maps.OverlayView interface. We use the
   // extend function to extend MarkerClusterer with google.maps.OverlayView
   // because it might not always be available when the code is defined so we
@@ -67,17 +71,23 @@ function MarkerClusterer(map, opt_markers, markerContents, infowindow, showingMa
   // there is no point going ahead :)
   this.extend(MarkerClusterer, google.maps.OverlayView);
   this.map_ = map;
+<<<<<<< .merge_file_jcJ1cl
   
+=======
+>>>>>>> .merge_file_AwCUZD
 
   /**
    * @type {Array.<google.maps.Marker>}
    * @private
    */
   this.markers_ = [];
+<<<<<<< .merge_file_jcJ1cl
   this.markerContents_ = [];
   this.showingMarker_ = showingMarker;
 
   this.infowindow_ = infowindow;
+=======
+>>>>>>> .merge_file_AwCUZD
 
   /**
    *  @type {Array.<Cluster>}
@@ -184,7 +194,11 @@ function MarkerClusterer(map, opt_markers, markerContents, infowindow, showingMa
 
   // Finally, add the markers
   if (opt_markers && opt_markers.length) {
+<<<<<<< .merge_file_jcJ1cl
     this.addMarkers(opt_markers, markerContents, false);
+=======
+    this.addMarkers(opt_markers, opt_listings, opt_listing_type, false);
+>>>>>>> .merge_file_AwCUZD
   }
 }
 
@@ -253,10 +267,16 @@ MarkerClusterer.prototype.setupStyles_ = function() {
 
   for (var i = 0, size; size = this.sizes[i]; i++) {
     this.styles_.push({
+<<<<<<< .merge_file_jcJ1cl
       url: this.imagePath_ + '.' + this.imageExtension_,
       height: 35,
       width: 35,
 	  anchor: [6,12]
+=======
+      url: this.imagePath_ + (i + 1) + '.' + this.imageExtension_,
+      height: size,
+      width: size
+>>>>>>> .merge_file_AwCUZD
     });
   }
 };
@@ -364,7 +384,16 @@ MarkerClusterer.prototype.getMaxZoom = function() {
  */
 MarkerClusterer.prototype.calculator_ = function(markers, numStyles) {
   var index = 0;
+<<<<<<< .merge_file_jcJ1cl
   var count = markers.length;
+=======
+  
+  // var count = markers.length;
+  var count = 0;
+  for (var i = 0; i < markers.length; i++)
+    count += markers[i].getZIndex();
+  
+>>>>>>> .merge_file_AwCUZD
   var dv = count;
   while (dv !== 0) {
     dv = parseInt(dv / 10, 10);
@@ -408,9 +437,15 @@ MarkerClusterer.prototype.getCalculator = function() {
  * @param {Array.<google.maps.Marker>} markers The markers to add.
  * @param {boolean=} opt_nodraw Whether to redraw the clusters.
  */
+<<<<<<< .merge_file_jcJ1cl
 MarkerClusterer.prototype.addMarkers = function(markers, markerContents, opt_nodraw) {
   for (var i = 0, marker; marker = markers[i]; i++) {
     this.pushMarkerTo_(marker, markerContents[i]);
+=======
+MarkerClusterer.prototype.addMarkers = function(markers, listings, listing_type, opt_nodraw) {
+  for (var i = 0, marker; marker = markers[i]; i++) {
+    this.pushMarkerTo_(marker, listings[i], listing_type);
+>>>>>>> .merge_file_AwCUZD
   }
   if (!opt_nodraw) {
     this.redraw();
@@ -424,7 +459,11 @@ MarkerClusterer.prototype.addMarkers = function(markers, markerContents, opt_nod
  * @param {google.maps.Marker} marker The marker to add.
  * @private
  */
+<<<<<<< .merge_file_jcJ1cl
 MarkerClusterer.prototype.pushMarkerTo_ = function(marker, markerContent) {
+=======
+MarkerClusterer.prototype.pushMarkerTo_ = function(marker, listing, listing_type) {
+>>>>>>> .merge_file_AwCUZD
   marker.isAdded = false;
   if (marker['draggable']) {
     // If the marker is draggable add a listener so we update the clusters on
@@ -435,11 +474,47 @@ MarkerClusterer.prototype.pushMarkerTo_ = function(marker, markerContent) {
       that.repaint();
     });
   }
+<<<<<<< .merge_file_jcJ1cl
   this.markers_.push(marker);
   this.markerContents_.push(markerContent);
 };
 
 
+=======
+  
+    // do the multiple listings
+    var html = "<div>";
+    
+    if (listing['id'].length > 1)
+    {
+        for (var i = 0; i < listing['id'].length; i++)
+        {
+            var link = "listings/" + listing['id'][i];
+            html += "<img src='/images/icons/map_listing/" + listing['category'][i] + "_" + listing_type + ".png" + "'><a href='" + link + "'><strong>" + listing['title'][i] + "</strong> </a> <br/>";
+        }
+    }
+    else
+    {
+        var link = "listings/" + listing['id'][0];
+        html += "<a href='" + link + "'><strong>" + listing['title'][0] + "</strong> </a> <br/>" + 
+    listing['description'][0] + "<br/>";
+    }
+
+    html += "</div>"
+  
+    var infoWindows = new google.maps.InfoWindow({
+        content: html
+    });
+  
+    
+  google.maps.event.addListener(marker, 'click', function() {
+    infoWindows.open(this.getMap(), marker);
+  });
+  
+  this.markers_.push(marker);
+};
+
+>>>>>>> .merge_file_AwCUZD
 /**
  * Adds a marker to the clusterer and redraws if needed.
  *
@@ -480,7 +555,10 @@ MarkerClusterer.prototype.removeMarker_ = function(marker) {
   }
 
   this.markers_.splice(index, 1);
+<<<<<<< .merge_file_jcJ1cl
   this.markerContents_.splice(index,1);
+=======
+>>>>>>> .merge_file_AwCUZD
 
   return true;
 };
@@ -668,7 +746,10 @@ MarkerClusterer.prototype.clearMarkers = function() {
 
   // Set the markers a empty array.
   this.markers_ = [];
+<<<<<<< .merge_file_jcJ1cl
   this.markerContents_ = [];
+=======
+>>>>>>> .merge_file_AwCUZD
 };
 
 
@@ -752,7 +833,11 @@ MarkerClusterer.prototype.distanceBetweenPoints_ = function(p1, p2) {
  * @param {google.maps.Marker} marker The marker to add.
  * @private
  */
+<<<<<<< .merge_file_jcJ1cl
 MarkerClusterer.prototype.addToClosestCluster_ = function(marker, markerIndex) {
+=======
+MarkerClusterer.prototype.addToClosestCluster_ = function(marker) {
+>>>>>>> .merge_file_AwCUZD
   var distance = 40000; // Some large number
   var clusterToAddTo = null;
   var pos = marker.getPosition();
@@ -768,10 +853,17 @@ MarkerClusterer.prototype.addToClosestCluster_ = function(marker, markerIndex) {
   }
 
   if (clusterToAddTo && clusterToAddTo.isMarkerInClusterBounds(marker)) {
+<<<<<<< .merge_file_jcJ1cl
     clusterToAddTo.addMarker(marker, markerIndex);
   } else {
     var cluster = new Cluster(this);
     cluster.addMarker(marker, markerIndex);
+=======
+    clusterToAddTo.addMarker(marker);
+  } else {
+    var cluster = new Cluster(this);
+    cluster.addMarker(marker);
+>>>>>>> .merge_file_AwCUZD
     this.clusters_.push(cluster);
   }
 };
@@ -794,8 +886,13 @@ MarkerClusterer.prototype.createClusters_ = function() {
   var bounds = this.getExtendedBounds(mapBounds);
 
   for (var i = 0, marker; marker = this.markers_[i]; i++) {
+<<<<<<< .merge_file_jcJ1cl
     if (!marker.isAdded && this.isMarkerInBounds_(marker, bounds) && (showingMarker!=marker.getTitle())) {
       this.addToClosestCluster_(marker, i);
+=======
+    if (!marker.isAdded && this.isMarkerInBounds_(marker, bounds)) {
+      this.addToClosestCluster_(marker);
+>>>>>>> .merge_file_AwCUZD
     }
   }
 };
@@ -817,7 +914,10 @@ function Cluster(markerClusterer) {
   this.averageCenter_ = markerClusterer.isAverageCenter();
   this.center_ = null;
   this.markers_ = [];
+<<<<<<< .merge_file_jcJ1cl
   this.markerIndex_ = [];
+=======
+>>>>>>> .merge_file_AwCUZD
   this.bounds_ = null;
   this.clusterIcon_ = new ClusterIcon(this, markerClusterer.getStyles(),
       markerClusterer.getGridSize());
@@ -849,7 +949,11 @@ Cluster.prototype.isMarkerAlreadyAdded = function(marker) {
  * @param {google.maps.Marker} marker The marker to add.
  * @return {boolean} True if the marker was added.
  */
+<<<<<<< .merge_file_jcJ1cl
 Cluster.prototype.addMarker = function(marker, markerIndex) {
+=======
+Cluster.prototype.addMarker = function(marker) {
+>>>>>>> .merge_file_AwCUZD
   if (this.isMarkerAlreadyAdded(marker)) {
     return false;
   }
@@ -869,7 +973,10 @@ Cluster.prototype.addMarker = function(marker, markerIndex) {
 
   marker.isAdded = true;
   this.markers_.push(marker);
+<<<<<<< .merge_file_jcJ1cl
   this.markerIndex_.push(markerIndex);
+=======
+>>>>>>> .merge_file_AwCUZD
 
   var len = this.markers_.length;
   if (len < this.minClusterSize_ && marker.getMap() != this.map_) {
@@ -925,7 +1032,10 @@ Cluster.prototype.remove = function() {
   this.clusterIcon_.remove();
   this.markers_.length = 0;
   delete this.markers_;
+<<<<<<< .merge_file_jcJ1cl
   delete this.markerIndex_;
+=======
+>>>>>>> .merge_file_AwCUZD
 };
 
 
@@ -1048,7 +1158,10 @@ function ClusterIcon(cluster, styles, opt_padding) {
   this.div_ = null;
   this.sums_ = null;
   this.visible_ = false;
+<<<<<<< .merge_file_jcJ1cl
   this.showingInfo_ =  false;
+=======
+>>>>>>> .merge_file_AwCUZD
 
   this.setMap(this.map_);
 }
@@ -1062,6 +1175,7 @@ ClusterIcon.prototype.triggerClusterClick = function() {
 
   // Trigger the clusterclick event.
   google.maps.event.trigger(markerClusterer, 'clusterclick', this.cluster_);
+<<<<<<< .merge_file_jcJ1cl
   var sameLocation = true;
   var markers = this.cluster_.getMarkers();
   var position = markers[0].getPosition();
@@ -1092,6 +1206,12 @@ ClusterIcon.prototype.triggerClusterClick = function() {
 	var z = this.map_.getZoom();
     this.map_.fitBounds(this.cluster_.getBounds());
 	if ((this.map_.getZoom()-z)>2) this.map_.setZoom(z+2);
+=======
+
+  if (markerClusterer.isZoomOnClick()) {
+    // Zoom into the cluster.
+    this.map_.fitBounds(this.cluster_.getBounds());
+>>>>>>> .merge_file_AwCUZD
   }
 };
 
@@ -1270,7 +1390,11 @@ ClusterIcon.prototype.createCss = function(pos) {
         this.height_ + 'px; width:' + this.width_ + 'px; text-align:center;');
   }
 
+<<<<<<< .merge_file_jcJ1cl
   var txtColor = this.textColor_ ? this.textColor_ : 'white';
+=======
+  var txtColor = this.textColor_ ? this.textColor_ : 'black';
+>>>>>>> .merge_file_AwCUZD
   var txtSize = this.textSize_ ? this.textSize_ : 11;
 
   style.push('cursor:pointer; top:' + pos.y + 'px; left:' +

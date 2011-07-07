@@ -1,4 +1,11 @@
 .new_listing_form_field_container
+  - if !rideshare
+    = form.label :origin, t(".location") + "*:", :class => "input"
+    = form.text_field :origin, :class => "text_field", :maxlength => "48", :onkeyup => "timed_input(this)", :value => origin_loc.address
+  - else
+    = form.label :origin, t(".origin") + "*:", :class => "input"
+    = form.text_field(:origin, :class => "title_text_field", :maxlength => "48",
+                    :onkeyup => "timed_input_on_route()")
   = fields_for :origin_loc do |origin_form|
     = origin_form.label :address, t('.origin') + ":", :class => "input"
     = origin_form.text_field(:address, :class => "title_text_field", :maxlength => "48", :onchange => "geocoder.geocode({address: this.value}, showOriginAddress); return false")
@@ -8,4 +15,3 @@
   #origin-map-canvas{:class => "map_canvas"}
 
   = form.hidden_field(:origin)
-
