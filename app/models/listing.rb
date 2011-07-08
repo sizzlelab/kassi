@@ -27,8 +27,7 @@ class Listing < ActiveRecord::Base
   has_many :comments
   
   has_many :share_types
-  
-<<<<<<< HEAD
+
   has_one :location, :dependent => :destroy
   has_one :origin_loc, :class_name => "Location", :dependent => :destroy, :conditions => {:location_type => "origin_loc"}
   has_one :destination_loc, :class_name => "Location", :dependent => :destroy, :conditions => {:location_type => "destination_loc"}
