@@ -538,7 +538,6 @@ function initialize_profile_feedback_view() {
 	$('#help_feedback_link').click(function() { $('#feedback_description').lightbox_me({centered: true}); });
 }
 
-<<<<<<< HEAD
 function translate_validation_messages(locale) {
 	if (locale == "fi") {
 		translate_validation_messages_to_finnish();
