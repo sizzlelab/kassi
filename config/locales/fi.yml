@@ -508,6 +508,7 @@ fi:
       times_viewed: "Katsottu"
       time: "kerta"
       times: "kertaa"
+      share: "Jaa"
     comment_form:
       write_comment: "Kirjoita uusi kommentti:"
       send_comment: "Lähetä kommentti"

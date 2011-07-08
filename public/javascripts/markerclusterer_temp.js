@@ -59,6 +59,7 @@
  * @constructor
  * @extends google.maps.OverlayView
  */
+
 function MarkerClusterer(map, opt_markers, markerContents, infowindow, showingMarker, opt_options) {
   // MarkerClusterer implements google.maps.OverlayView interface. We use the
   // extend function to extend MarkerClusterer with google.maps.OverlayView
@@ -67,7 +68,6 @@ function MarkerClusterer(map, opt_markers, markerContents, infowindow, showingMa
   // there is no point going ahead :)
   this.extend(MarkerClusterer, google.maps.OverlayView);
   this.map_ = map;
-  
 
   /**
    * @type {Array.<google.maps.Marker>}
@@ -185,6 +185,7 @@ function MarkerClusterer(map, opt_markers, markerContents, infowindow, showingMa
   // Finally, add the markers
   if (opt_markers && opt_markers.length) {
     this.addMarkers(opt_markers, markerContents, false);
+    this.addMarkers(opt_markers, opt_listings, opt_listing_type, false);
   }
 }
 
@@ -256,7 +257,10 @@ MarkerClusterer.prototype.setupStyles_ = function() {
       url: this.imagePath_ + '.' + this.imageExtension_,
       height: 35,
       width: 35,
-	  anchor: [6,12]
+	    anchor: [6,12]
+      //url: this.imagePath_ + (i + 1) + '.' + this.imageExtension_,
+      //height: size,
+      //width: size
     });
   }
 };
@@ -364,7 +368,9 @@ MarkerClusterer.prototype.getMaxZoom = function() {
  */
 MarkerClusterer.prototype.calculator_ = function(markers, numStyles) {
   var index = 0;
-  var count = markers.length;
+  var count = 0;
+  for (var i = 0; i < markers.length; i++)
+    count += markers[i].getZIndex();
   var dv = count;
   while (dv !== 0) {
     dv = parseInt(dv / 10, 10);
@@ -408,9 +414,10 @@ MarkerClusterer.prototype.getCalculator = function() {
  * @param {Array.<google.maps.Marker>} markers The markers to add.
  * @param {boolean=} opt_nodraw Whether to redraw the clusters.
  */
-MarkerClusterer.prototype.addMarkers = function(markers, markerContents, opt_nodraw) {
+
+MarkerClusterer.prototype.addMarkers = function(markers, listings, listing_type, opt_nodraw) {
   for (var i = 0, marker; marker = markers[i]; i++) {
-    this.pushMarkerTo_(marker, markerContents[i]);
+    this.pushMarkerTo_(marker, listings[i], listing_type);
   }
   if (!opt_nodraw) {
     this.redraw();
@@ -424,7 +431,7 @@ MarkerClusterer.prototype.addMarkers = function(markers, markerContents, opt_nod
  * @param {google.maps.Marker} marker The marker to add.
  * @private
  */
-MarkerClusterer.prototype.pushMarkerTo_ = function(marker, markerContent) {
+MarkerClusterer.prototype.pushMarkerTo_ = function(marker, listing, listing_type) {
   marker.isAdded = false;
   if (marker['draggable']) {
     // If the marker is draggable add a listener so we update the clusters on
@@ -435,11 +442,37 @@ MarkerClusterer.prototype.pushMarkerTo_ = function(marker, markerContent) {
       that.repaint();
     });
   }
+    // do the multiple listings
+    var html = "<div>";
+    
+    if (listing['id'].length > 1)
+    {
+        for (var i = 0; i < listing['id'].length; i++)
+        {
+            var link = "listings/" + listing['id'][i];
+            html += "<img src='/images/icons/map_listing/" + listing['category'][i] + "_" + listing_type + ".png" + "'><a href='" + link + "'><strong>" + listing['title'][i] + "</strong> </a> <br/>";
+        }
+    }
+    else
+    {
+        var link = "listings/" + listing['id'][0];
+        html += "<a href='" + link + "'><strong>" + listing['title'][0] + "</strong> </a> <br/>" + 
+    listing['description'][0] + "<br/>";
+    }
+
+    html += "</div>"
+  
+    var infoWindows = new google.maps.InfoWindow({
+        content: html
+    });
+  
+    
+  google.maps.event.addListener(marker, 'click', function() {
+    infoWindows.open(this.getMap(), marker);
+  });
+  
   this.markers_.push(marker);
-  this.markerContents_.push(markerContent);
 };
-
-
 /**
  * Adds a marker to the clusterer and redraws if needed.
  *
@@ -480,7 +513,6 @@ MarkerClusterer.prototype.removeMarker_ = function(marker) {
   }
 
   this.markers_.splice(index, 1);
-  this.markerContents_.splice(index,1);
 
   return true;
 };
@@ -668,7 +700,6 @@ MarkerClusterer.prototype.clearMarkers = function() {
 
   // Set the markers a empty array.
   this.markers_ = [];
-  this.markerContents_ = [];
 };
 
 
@@ -869,7 +900,6 @@ Cluster.prototype.addMarker = function(marker, markerIndex) {
 
   marker.isAdded = true;
   this.markers_.push(marker);
-  this.markerIndex_.push(markerIndex);
 
   var len = this.markers_.length;
   if (len < this.minClusterSize_ && marker.getMap() != this.map_) {
@@ -925,7 +955,6 @@ Cluster.prototype.remove = function() {
   this.clusterIcon_.remove();
   this.markers_.length = 0;
   delete this.markers_;
-  delete this.markerIndex_;
 };
 
 
@@ -1087,7 +1116,7 @@ ClusterIcon.prototype.triggerClusterClick = function() {
 		this.showingInfo_ = false;
 	}
   }
-  else if (markerClusterer.isZoomOnClick()) {
+  else if (this.map_.fitBounds(this.cluster_.getBounds())) {
     // Zoom into the cluster.
 	var z = this.map_.getZoom();
     this.map_.fitBounds(this.cluster_.getBounds());
@@ -1271,6 +1300,7 @@ ClusterIcon.prototype.createCss = function(pos) {
   }
 
   var txtColor = this.textColor_ ? this.textColor_ : 'white';
+  var txtColor = this.textColor_ ? this.textColor_ : 'black';
   var txtSize = this.textSize_ ? this.textSize_ : 11;
 
   style.push('cursor:pointer; top:' + pos.y + 'px; left:' +
