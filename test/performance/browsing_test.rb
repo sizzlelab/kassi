@@ -9,6 +9,9 @@ class BrowsingTest < ActionController::PerformanceTest
     @author = Factory(:person)
     @community = Factory(:community, :domain => "test")
     
+    # The listing creation is not needed in every test so it would be better to call only when needed, but
+    # if called inside the test method the time used for creation is counted to the benchmarking.. :/
+    create_listings
   end
   
   def create_listings(n=40)
@@ -21,7 +24,7 @@ class BrowsingTest < ActionController::PerformanceTest
   end
   
   def test_homepage
-    create_listings
+    
     get 'http://test.lvh.me'
     assert_response :success   
   end

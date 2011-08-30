@@ -24,48 +24,48 @@ Feature: User browses listings
     And I should see "Helsinki - Turku"
     And I should see "Apartment"
     And I should see "saw"
-    And I should not see "axe" within listings
-    And I should not see "tool" within listings
+    And I should not see "axe" within "#search_results"
+    And I should not see "tool" within "#search_results"
     And I follow "Items"
     And I should see "car spare parts"
-    And I should not see "massage" within listings
-    And I should not see "Helsinki - Turku" within listings
-    And I should not see "Apartment" within listings
+    And I should not see "massage" within "#search_results"
+    And I should not see "Helsinki - Turku" within "#search_results"
+    And I should not see "Apartment" within "#search_results"
     And I should see "saw"
-    And I should not see "axe" within listings
-    And I should not see "tool" within listings
+    And I should not see "axe" within "#search_results"
+    And I should not see "tool" within "#search_results"
     And I follow "Lending"
-    And I should not see "car spare parts" within listings
-    And I should not see "massage" within listings
-    And I should not see "Helsinki - Turku" within listings
-    And I should not see "Apartment" within listings
+    And I should not see "car spare parts" within "#search_results"
+    And I should not see "massage" within "#search_results"
+    And I should not see "Helsinki - Turku" within "#search_results"
+    And I should not see "Apartment" within "#search_results"
     And I should see "saw"
-    And I should not see "axe" within listings
-    And I should not see "tool" within listings
+    And I should not see "axe" within "#search_results"
+    And I should not see "tool" within "#search_results"
     And I follow "Selling"
     And I should see "car spare parts"
-    And I should not see "massage" within listings
-    And I should not see "Helsinki - Turku" within listings
-    And I should not see "Apartment" within listings
+    And I should not see "massage" within "#search_results"
+    And I should not see "Helsinki - Turku" within "#search_results"
+    And I should not see "Apartment" within "#search_results"
     And I should see "saw"
-    And I should not see "axe" within listings
-    And I should not see "tool" within listings
+    And I should not see "axe" within "#search_results"
+    And I should not see "tool" within "#search_results"
     And I follow "Favors"
-    And I should not see "car spare parts" within listings
-    And I should not see "massage" within listings
-    And I should not see "Helsinki - Turku" within listings
-    And I should not see "Apartment" within listings
-    And I should not see "saw" within listings
-    And I should not see "axe" within listings
-    And I should not see "tool" within listings
+    And I should not see "car spare parts" within "#search_results"
+    And I should not see "massage" within "#search_results"
+    And I should not see "Helsinki - Turku" within "#search_results"
+    And I should not see "Apartment" within "#search_results"
+    And I should not see "saw" within "#search_results"
+    And I should not see "axe" within "#search_results"
+    And I should not see "tool" within "#search_results"
     And I follow "All offer types"
-    And I should not see "car spare parts" within listings
+    And I should not see "car spare parts" within "#search_results"
     And I should see "massage"
-    And I should not see "Helsinki - Turku" within listings
-    And I should not see "Apartment" within listings
-    And I should not see "saw" within listings
-    And I should not see "axe" within listings
-    And I should not see "tool" within listings
+    And I should not see "Helsinki - Turku" within "#search_results"
+    And I should not see "Apartment" within "#search_results"
+    And I should not see "saw" within "#search_results"
+    And I should not see "axe" within "#search_results"
+    And I should not see "tool" within "#search_results"
     
   @javascript
   Scenario: User browses requests page
@@ -88,48 +88,48 @@ Feature: User browses listings
     And I should see "Helsinki - Turku"
     And I should see "Apartment"
     And I should see "saw"
-    And I should not see "axe" within listings
-    And I should not see "tool" within listings
+    And I should not see "axe" within "#search_results"
+    And I should not see "tool" within "#search_results"
     And I follow "Items"
     And I should see "car spare parts"
-    And I should not see "massage" within listings
-    And I should not see "Helsinki - Turku" within listings
-    And I should not see "Apartment" within listings
+    And I should not see "massage" within "#search_results"
+    And I should not see "Helsinki - Turku" within "#search_results"
+    And I should not see "Apartment" within "#search_results"
     And I should see "saw"
-    And I should not see "axe" within listings
-    And I should not see "tool" within listings
+    And I should not see "axe" within "#search_results"
+    And I should not see "tool" within "#search_results"
     And I follow "Borrowing"
-    And I should not see "car spare parts" within listings
-    And I should not see "massage" within listings
-    And I should not see "Helsinki - Turku" within listings
-    And I should not see "Apartment" within listings
+    And I should not see "car spare parts" within "#search_results"
+    And I should not see "massage" within "#search_results"
+    And I should not see "Helsinki - Turku" within "#search_results"
+    And I should not see "Apartment" within "#search_results"
     And I should see "saw"
-    And I should not see "axe" within listings
-    And I should not see "tool" within listings
+    And I should not see "axe" within "#search_results"
+    And I should not see "tool" within "#search_results"
     And I follow "Buying"
     And I should see "car spare parts"
-    And I should not see "massage" within listings
-    And I should not see "Helsinki - Turku" within listings
-    And I should not see "Apartment" within listings
+    And I should not see "massage" within "#search_results"
+    And I should not see "Helsinki - Turku" within "#search_results"
+    And I should not see "Apartment" within "#search_results"
     And I should see "saw"
-    And I should not see "axe" within listings
-    And I should not see "tool" within listings
+    And I should not see "axe" within "#search_results"
+    And I should not see "tool" within "#search_results"
     And I follow "Favors"
-    And I should not see "car spare parts" within listings
-    And I should not see "massage" within listings
-    And I should not see "Helsinki - Turku" within listings
-    And I should not see "Apartment" within listings
-    And I should not see "saw" within listings
-    And I should not see "axe" within listings
-    And I should not see "tool" within listings
+    And I should not see "car spare parts" within "#search_results"
+    And I should not see "massage" within "#search_results"
+    And I should not see "Helsinki - Turku" within "#search_results"
+    And I should not see "Apartment" within "#search_results"
+    And I should not see "saw" within "#search_results"
+    And I should not see "axe" within "#search_results"
+    And I should not see "tool" within "#search_results"
     And I follow "All request types"
-    And I should not see "car spare parts" within listings
+    And I should not see "car spare parts" within "#search_results"
     And I should see "massage"
-    And I should not see "Helsinki - Turku" within listings
-    And I should not see "Apartment" within listings
-    And I should not see "saw" within listings
-    And I should not see "axe" within listings
-    And I should not see "tool" within listings
+    And I should not see "Helsinki - Turku" within "#search_results"
+    And I should not see "Apartment" within "#search_results"
+    And I should not see "saw" within "#search_results"
+    And I should not see "axe" within "#search_results"
+    And I should not see "tool" within "#search_results"
     
   @javascript
   Scenario: User browses requests with visibility settings
@@ -142,14 +142,14 @@ Feature: User browses listings
     And there is housing request with title "apartment" and with share type "rent"
     And visibility of that listing is "disabled"
     And I am on the requests page
-    And I should not see "car spare parts" within listings
+    And I should not see "car spare parts" within "#search_results"
     And I should see "massage"
-    And I should not see "apartment" within listings
+    And I should not see "apartment" within "#search_results"
     When I log in as "kassi_testperson1"
     And I follow "Requests"
     Then I should see "car spare parts"
     And I should see "massage"
-    And I should not see "apartment" within listings
+    And I should not see "apartment" within "#search_results"
     
   @javascript
   Scenario: User browses offers page with tags
