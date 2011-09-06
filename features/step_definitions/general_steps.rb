@@ -12,6 +12,10 @@ When /^I print "(.+)"$/ do |text|
   puts text
 end
 
+When /^wait for (\d+) seconds$/ do |arg1|
+  sleep Integer(arg1)
+end
+
 Then /^(?:|I )should not see selector "([^"]*)"?$/ do |selector|
   lambda {
     with_scope(selector) do
