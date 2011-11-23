@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111116182825) do
+ActiveRecord::Schema.define(:version => 20111123071850) do
 
   create_table "badges", :force => true do |t|
     t.string   "person_id"
@@ -60,6 +60,7 @@ ActiveRecord::Schema.define(:version => 20111116182825) do
     t.text     "allowed_emails"
     t.boolean  "users_can_invite_new_users",                :default => false
     t.boolean  "select_whether_name_is_shown_to_everybody", :default => false
+    t.boolean  "news_enabled",                              :default => false
   end
 
   create_table "communities_listings", :id => false, :force => true do |t|
@@ -285,6 +286,15 @@ ActiveRecord::Schema.define(:version => 20111116182825) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "conversation_id"
+  end
+
+  create_table "news_items", :force => true do |t|
+    t.string   "title"
+    t.string   "content"
+    t.integer  "community_id"
+    t.string   "author_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "notifications", :force => true do |t|

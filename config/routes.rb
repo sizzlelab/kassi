@@ -65,6 +65,7 @@ Kassi::Application.routes.draw do
     
     namespace :admin do
       resources :feedbacks
+      resources :news_items
     end
     resources :listings do
       member do
@@ -157,6 +158,7 @@ Kassi::Application.routes.draw do
   end
   
   # Some non-RESTful mappings
+  match '/:locale/admin' => 'admin/news_items#index', :as => :admin
   match '/badges/:style/:id.:format' => "badges#image"
   match "/people/:person_id/inbox/:id", :to => redirect("/fi/people/%{person_id}/messages/%{id}")
   match "/:locale/load" => "listings#load", :as => :load
