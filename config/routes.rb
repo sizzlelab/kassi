@@ -134,6 +134,7 @@ Kassi::Application.routes.draw do
         get :how_to_use
         get :terms
         get :register_details
+        get :news
       end  
     end
     resource :terms do

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111123071850) do
+ActiveRecord::Schema.define(:version => 20111124174508) do
 
   create_table "badges", :force => true do |t|
     t.string   "person_id"
@@ -290,7 +290,7 @@ ActiveRecord::Schema.define(:version => 20111123071850) do
 
   create_table "news_items", :force => true do |t|
     t.string   "title"
-    t.string   "content"
+    t.text     "content"
     t.integer  "community_id"
     t.string   "author_id"
     t.datetime "created_at"

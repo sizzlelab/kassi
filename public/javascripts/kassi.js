@@ -565,6 +565,22 @@ function initialize_homepage() {
 	});
 }
 
+function initialize_admin_news_item(news_item_id) {
+  $('#news_item_' + news_item_id + '_content_link').click(function() { 
+		$('#news_item_' + news_item_id + '_content').slideToggle('fast'); 
+	});
+}
+
+function initialize_admin_new_news_item_form() {
+  auto_resize_text_areas();
+  $('#new_news_item input.text_field:first').focus();
+  $('#new_news_item').validate({
+		rules: {
+		  "news_item[title]": {required: true, minlength: 1, maxlenght: 200}
+		}
+	});
+}
+
 function set_textarea_maxlength() {
   var ignore = [8,9,13,33,34,35,36,37,38,39,40,46];
   var eventName = 'keypress';
