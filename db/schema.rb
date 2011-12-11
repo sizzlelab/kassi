@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111124174508) do
+ActiveRecord::Schema.define(:version => 20111211175403) do
 
   create_table "badges", :force => true do |t|
     t.string   "person_id"
@@ -376,6 +376,33 @@ ActiveRecord::Schema.define(:version => 20111124174508) do
   create_table "person_read_listings", :force => true do |t|
     t.string   "person_id"
     t.integer  "listing_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "poll_answers", :force => true do |t|
+    t.integer  "poll_id"
+    t.integer  "poll_option_id"
+    t.string   "answerer_id"
+    t.text     "comment"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "poll_options", :force => true do |t|
+    t.string   "label"
+    t.integer  "poll_id"
+    t.float    "percentage", :default => 0.0
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "polls", :force => true do |t|
+    t.string   "title"
+    t.string   "author_id"
+    t.boolean  "active",       :default => true
+    t.string   "community_id"
+    t.datetime "closed_at"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

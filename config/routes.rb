@@ -66,6 +66,16 @@ Kassi::Application.routes.draw do
     namespace :admin do
       resources :feedbacks
       resources :news_items
+      resources :polls do
+        collection do
+          get :add_option
+          get :remove_option
+        end
+        member do
+          put :open
+          put :close
+        end
+      end
     end
     resources :listings do
       member do
@@ -127,6 +137,7 @@ Kassi::Application.routes.draw do
       resources :invitations
       resources :badges
       resources :testimonials
+      resources :poll_answers
     end
     resources :infos do
       collection do
