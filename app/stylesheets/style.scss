@@ -624,6 +624,13 @@ form, input {
 	padding: 20px 0;
 }
 
+span.news_item_more_link {
+  margin-left: 10px;
+  padding-top: 10px;
+  float: left;
+  clear: both;
+}
+
 .recent_listings {
 	width: 340px;
 }
@@ -3167,3 +3174,4 @@ span.option_percentage_admin_view {
 .poll_answer {
   padding: 10px;
 }
+
